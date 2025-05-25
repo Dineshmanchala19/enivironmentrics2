@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}NSMI Change Detection{% endblock %}
+
+{% block body_class %}bg-green-50{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-center min-h-screen bg-cover bg-center transition-transform duration-700 ease-in-out transform hover:scale-105" style="background-image: url('{{ url_for('static', filename='images/nsmi.jpg') }}');">
+    <div class="bg-white bg-opacity-30 backdrop-blur-md p-8 rounded-md shadow-lg max-w-md w-full transition-transform duration-500 ease-in-out transform hover:scale-105 relative">
+        <h1 class="text-3xl font-bold text-black mb-8 transition-colors duration-300 hover:text-gray-700">NSMI Change Detection</h1>
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="mb-4">
+                <label for="nsmi1" class="block text-black mb-2">Upload earlier NSMI TIFF:</label>
+                <input type="file" id="nsmi1" name="nsmi1" class="hidden" accept=".tif,.tiff" required>
+                <label for="nsmi1" class="cursor-pointer bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 px-4 rounded-md w-full text-center hover:from-blue-600 hover:to-blue-800 transition duration-300 shadow-lg hover:shadow-xl">Choose File</label>
+            </div>
+            <div class="mb-6">
+                <label for="nsmi2" class="block text-black mb-2">Upload later NSMI TIFF:</label>
+                <input type="file" id="nsmi2" name="nsmi2" class="hidden" accept=".tif,.tiff" required>
+                <label for="nsmi2" class="cursor-pointer bg-gradient-to-r from-green-500 to-green-700 text-white py-3 px-4 rounded-md w-full text-center hover:from-green-600 hover:to-green-800 transition duration-300 shadow-lg hover:shadow-xl">Choose File</label>
+            </div>
+            <button type="submit" class="bg-black text-white py-2 px-4 rounded-md w-full hover:bg-gray-800 transition ease-in-out duration-300">Calculate Change</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages mt-4 bg-green-100 text-green-700 p-4 rounded-md">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% if show_view %}
+            <div class="mt-4 flex flex-col gap-4">
+                <div class="flex justify-between">
+                    <a href="{{ url_for('download_nsmi') }}" class="ml-2 bg-blue-500 text-white py-2 px-4 rounded-md w-full text-center hover:bg-blue-600 transition duration-300">Download TIFF</a> 
+                </div>
+                
+                <div class="flex justify-between">
+                    <a href="{{ url_for('view_nsmi') }}" class="bg-green-500 text-white py-2 px-4 rounded-md w-full text-center hover:bg-green-600 transition duration-300">View </a>
+                </div>
+                <div class="flex justify-between">
+                    <a href="{{ url_for('view_classified_nsmi') }}" class="bg-green-500 text-white py-2 px-4 rounded-md w-full text-center hover:bg-green-600 transition duration-300">classify </a>
+                </div>
+                <div class="flex justify-between">
+                    <a href="{{ url_for('histogram_nsmi') }}" class="bg-green-500 text-white py-2 px-4 rounded-md w-full text-center hover:bg-green-600 transition duration-300">Calculate_histogram </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

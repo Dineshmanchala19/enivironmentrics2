@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}AquaSoil - Home{% endblock %}
+
+{% block body_class %}bg-blue-50{% endblock %}
+
+{% block content %}
+    <section class="text-center py-16">
+        <h1 class="text-5xl font-bold text-blue-600 mb-6">Welcome to  Environmetrics</h1>
+        <p class="text-xl text-gray-700 mb-8 animate-marquee whitespace-nowrap">
+            Your trusted solution for monitoring vegetation, water content, and soil moisture with NDVI, NDWI, and NSMI change detection.
+        </p>
+
+        <div class="space-x-4">
+            <a href="#" id="exploreNdvi" class="inline-block bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition transform hover:scale-105">Explore NDVI</a>
+            <a href="#" id="exploreNdwi" class="inline-block bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition transform hover:scale-105">Explore NDWI</a>
+            <a href="#" id="exploreNsmi" class="inline-block bg-yellow-600 text-white py-3 px-6 rounded-md hover:bg-yellow-700 transition transform hover:scale-105">Explore NSMI</a>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-16">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Why Choose Environmetrics?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-4">Accurate NDVI Detection</h3>
+                    <p class="text-gray-700">Track vegetation health over time using our robust NDVI tools for precise analysis.</p>
+                </div>
+                <div class="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="text-xl font-semibold text-green-600 mb-4">Reliable NDWI Measurements</h3>
+                    <p class="text-gray-700">Monitor water content in vegetation with ease and identify changes over time.</p>
+                </div>
+                <div class="bg-white p-6 rounded-md shadow-md transition-transform transform hover:scale-105 hover:shadow-xl">
+                    <h3 class="text-xl font-semibold text-yellow-600 mb-4">Advanced NSMI Tools</h3>
+                    <p class="text-gray-700">Measure soil moisture effectively with the latest tools for precision farming.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-blue-600 text-white text-center">
+        <h2 class="text-4xl font-bold mb-4">Get Started with Environmetrics</h2>
+        <p class="text-xl mb-8">Sign up today and start exploring vegetation health, water content, and soil moisture.</p>
+        <a href="{{ url_for('signup') }}" class="bg-white text-blue-600 py-3 px-6 rounded-md font-semibold hover:bg-gray-100 transition">Create an Account</a>
+    </section>
+{% endblock %}
+
+{% block extra_scripts %}
+<!-- Include SweetAlert script -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.getElementById('exploreNdvi').addEventListener('click', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'NDVI Information',
+            text: 'NDVI (Normalized Difference Vegetation Index) is used to assess vegetation health over time.',
+            icon: 'info',  // Ensure this is set to 'info' to avoid warnings
+            confirmButtonText: 'Close'
+        });
+    });
+
+    document.getElementById('exploreNdwi').addEventListener('click', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'NDWI Information',
+            text: 'NDWI (Normalized Difference Water Index) helps in monitoring water content in vegetation.',
+            icon: 'info',  // Ensure this is set to 'info' to avoid warnings
+            confirmButtonText: 'Close'
+        });
+    });
+
+    document.getElementById('exploreNsmi').addEventListener('click', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'NSMI Information',
+            text: 'NSMI (Normalized Soil Moisture Index) is used for measuring soil moisture levels.',
+            icon: 'info',  // Ensure this is set to 'info' to avoid warnings
+            confirmButtonText: 'Close'
+        });
+    });
+</script>
+{% endblock %}

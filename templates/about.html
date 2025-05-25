@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block body_class %}bg-gray-50{% endblock %}
+
+{% block content %}
+    <div class="relative flex items-center justify-center min-h-screen bg-cover bg-center transition-opacity duration-1000" style="background-image: url('{{ url_for('static', filename='images/about-bg.jpg') }}');">
+        <div class="p-6 rounded-lg shadow-md max-w-4xl mx-auto transition-opacity duration-500">
+            <h1 class="text-4xl font-bold text-center text-white mb-6">About Our Project</h1>
+
+            <section class="mb-6 p-4">
+                <h2 class="text-2xl font-semibold text-white">Our Purpose</h2>
+                <p class="mt-2 text-white">
+                    Our project, AquaSoil, aims to leverage remote sensing technology to analyze and monitor
+                    soil moisture levels and vegetation health. By using NDVI, NDWI, and NSMI indices, we
+                    provide valuable insights for farmers, researchers, and environmentalists.
+                </p>
+            </section>
+
+            <section class="mb-6 p-4">
+                <h2 class="text-2xl font-semibold text-white">Technology Stack</h2>
+                <ul class="mt-2 text-white list-disc list-inside">
+                    <li>Flask - A lightweight WSGI web application framework in Python</li>
+                    <li>Rasterio - For reading and writing geospatial raster data</li>
+                    <li>Jinja2 - Templating engine for rendering HTML</li>
+                    <li>Tailwind CSS - Utility-first CSS framework for styling</li>
+                    <li>PostgreSQL - Relational database management system (if applicable)</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold text-white">Meet the Team</h2>
+                <p class="mt-2 text-white">
+                    We are a passionate team of developers and researchers dedicated to enhancing agricultural
+                    productivity through technology.
+                </p>
+            </section>
+
+            <div class="mt-6">
+                <a href="{{ url_for('home') }}" class="inline-block px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-colors duration-300">
+                    Go Back Home
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body_class %}bg-blue-50{% endblock %}
+
+{% block content %}
+    <h1 class="text-4xl font-bold text-blue-600 text-center my-8">Welcome to Environmetrics</h1>
+    <p class="text-xl text-gray-700 text-center">Your solution for NDVI, NDWI, and NSMI change detection.</p>
+    <div class="text-center mt-8">
+        <a href="{{ url_for('ndvi') }}" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">Get Started</a>
+    </div>
+{% endblock %}

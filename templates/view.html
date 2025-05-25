@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}View NDVI Change Detection{% endblock %}
+
+{% block body_class %}bg-blue-50{% endblock %}
+
+{% block content %}
+    <div class="flex items-center justify-center min-h-screen bg-cover bg-center" style="background-image: url('{{ url_for('static', filename='images/view_background.jpg') }}');">
+        <div class="bg-white bg-opacity-30 backdrop-blur-md p-12 rounded-md shadow-lg max-w-lg w-full"> <!-- Increased padding and width -->
+            <h1 class="text-4xl font-bold text-black mb-6 text-center">NDVI Change Detection Result</h1> <!-- Increased font size and centered text -->
+
+            {% if image_url %}
+                <div class="mb-4">
+                    <img src="{{ url_for('static', filename=image_url) }}" alt="NDVI Change Detection" class="w-full rounded-md shadow-lg">
+                </div>
+            {% else %}
+                <p class="text-red-500">No image available to display.</p>
+            {% endif %}
+
+            <div class="mt-6 flex justify-between">
+                <a href="{{ url_for('ndvi') }}" class="bg-blue-500 text-white py-3 px-6 rounded-md hover:bg-blue-600 transition duration-300">Go Back</a> <!-- Increased padding -->
+                <a href="{{ url_for('download_ndvi') }}" class="bg-black text-white py-3 px-6 rounded-md hover:bg-gray-800 transition duration-300">Download TIFF</a> <!-- Increased padding -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
